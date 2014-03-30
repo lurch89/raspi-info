@@ -32,7 +32,21 @@
   
   
 
-  <div class="" id="weather">
+<div class="" id="weather">
+<div id="weather-content" class="text-center" style="width:100%;">
+</div>
+
+<div class="cycle-slideshow text-center" data-cycle-slides="> div" style="width:100%">
+<div id="wxtoday" style="width:100%">></div>
+<div id="wxtomorrow" style="width:100%">></div>
+</div>
+  
+  
+  
+  
+  
+  
+  
   </div>
 
   
@@ -55,13 +69,15 @@
   </div>
 
   </div> <!-- end container -->
+  
+  
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jq.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery.simpleWeather.js"></script>
-	<script src="js/gauge.min.js"></script>
-
+	
 	<script type="text/javascript" src="js/jquery.flipcountdown.js"></script>
 
 	<script language="Javascript">
@@ -72,17 +88,24 @@
 	location: '',
 	unit: 'f',
 	success: function(weather) {
-		html = '<div id="weather-content" class="text-center" style="width:100%;">';
-		html += '<div id="weather-temp-content" class="text-right" style="background-image:url('+weather.image+'); background-position: left top; background-repeat:no-repeat; height:116px; line-height:170px; width:100%">';
+		// html = '<div id="weather-content" class="text-center" style="width:100%;">';
+		// html += '<div id="weather-temp-content" class="text-right" style="background-image:url('+weather.image+'); background-position: left top; background-repeat:no-repeat; height:116px; line-height:170px; width:100%">';
+		// html += '<b>Now</b>: <span id="weather_temp">'+weather.temp+'&deg; '+weather.units.temp+'</span></div>';
+		// html += '<p>'+weather.currently+'';
+		// html += '<br>Humidity: '+weather.humidity+'&#37;<br>Wind: '+weather.wind.direction+' '+weather.wind.speed+' MPH</p>';
+		// html += '<div class="cycle-slideshow" data-cycle-slides="> div">';
+		html_wxtoday = '<p><b>Today</b><br><span id="weather_for">H: '+weather.high+'&deg; | L: '+weather.low+'&deg;<br>'+weather.forecast+'</span></p>';
+		html_wxtomorrow = '<div><p><b>Tomorrow</b><br><span id="weather_for">H: '+weather.tomorrow.high+'&deg; | L: '+weather.tomorrow.low+'&deg;<br>'+weather.tomorrow.forecast+'</span></p></div>';
+		// html += '</div>';
+		
+		html = '<div id="weather-temp-content" class="text-right" style="background-image:url('+weather.image+'); background-position: left top; background-repeat:no-repeat; height:116px; line-height:170px; width:100%">';
 		html += '<b>Now</b>: <span id="weather_temp">'+weather.temp+'&deg; '+weather.units.temp+'</span></div>';
 		html += '<p>'+weather.currently+'';
-		html += '<br>Humidity: '+weather.humidity+'&#37;<br>Wind: '+weather.wind.direction+' '+weather.wind.speed+' MPH</p>';
-		html += '<p><b>Today</b><br><span id="weather_for">H: '+weather.high+'&deg; | L: '+weather.low+'&deg;<br>'+weather.forecast+'</span></p>';
+		html += '<br>Humidity: '+weather.humidity+'&#37;<br>Wind: '+weather.wind.direction+' '+weather.wind.speed+' MPH</p></div>';
 		
-		html += '</div>';
-		
-		
-		$("#weather").html(html);
+		$("#weather-content").html(html);
+		$("#wxtoday").html(html_wxtoday);
+		$("#wxtomorrow").html(html_wxtomorrow);
 
 	},
 	error: function(error) {
@@ -103,19 +126,6 @@
 	
 	
 	</script>
-	
-	<script lang="JavaScript">
-  <!--
-	$.ajaxSetup ({
-		cache: false
-	});
-
-
-  
-  
-  // -->
-  </script>
-
-
+	<script src="js/jquery.cycle2.js"></script>
   </body>
 </html>
