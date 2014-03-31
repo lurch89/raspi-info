@@ -17,3 +17,10 @@ span#weather_temp {
 font-weight: bold;
 font-size: 28pt;
 }
+
+.xdsoft_flipcountdown {width: 100%; margin: 0 auto;}
+
+h3 {margin-top: 10px;
+margin-bottom: 3px;}
+
+h3#top {margin-top: 10px}
